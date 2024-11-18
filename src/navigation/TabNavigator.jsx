@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator()
 const TabNavigator = () => {
     return (
         <Tab.Navigator 
-            initialRouteName="Shop"
+            initialRouteName="Resume"
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
@@ -29,7 +29,7 @@ const TabNavigator = () => {
 
             />
             <Tab.Screen 
-                name="Shop" 
+                name="Products" 
                 component={ProductsScreen} 
             />
         </Tab.Navigator>
