@@ -1,5 +1,5 @@
 const globalStyles = {
-    padding: 40
+    padding: 5
 }
 
 export default globalStyles

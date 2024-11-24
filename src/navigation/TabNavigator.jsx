@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { View, Text } from 'react-native'
 import React from 'react'
-import EquipmentScreen from "../screens/EquipmentScreen"
-import ProductsScreen from "../screens/ProductsScreen"
 import ResumeScreen from "../screens/ResumeScreen"
+import InventoryScreen from "../screens/InventoryScreen"
+import ShopNavigator from "./ShopNavigator"
+import CartNavigator from "./CartNavigator";
 
 const Tab = createBottomTabNavigator()
 
@@ -15,22 +15,23 @@ const TabNavigator = () => {
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                // tabBarStyle: styles.tabBar
             }}
         >
             <Tab.Screen 
                 name="Resume"
                 component={ResumeScreen} 
-
             />
             <Tab.Screen 
-                name="Equipment" 
-                component={EquipmentScreen} 
-
+                name="Inventory" 
+                component={InventoryScreen} 
             />
             <Tab.Screen 
-                name="Products" 
-                component={ProductsScreen} 
+                name="Shop" 
+                component={ShopNavigator} 
+            />
+            <Tab.Screen 
+                name="Cart" 
+                component={CartNavigator} 
             />
         </Tab.Navigator>
     )
