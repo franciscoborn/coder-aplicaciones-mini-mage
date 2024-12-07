@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import TabNavigator from "./TabNavigator";
+import AuthNavigator from "./AuthNavigator";
 
 import { useGetProfilePictureQuery } from "../redux/apis/userApi";
 import { setProfilePicture } from "../redux/slices/authSlice";
@@ -39,7 +40,7 @@ const MainNavigator = () => {
     return (
         <NavigationContainer>
             {
-                user ? <TabNavigator /> : <TabNavigator />
+                user ? <TabNavigator /> : <AuthNavigator />
             }
         </NavigationContainer>
     );
