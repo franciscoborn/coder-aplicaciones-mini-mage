@@ -1,4 +1,4 @@
-import { colors } from '../styles/colors'
+import { colors } from './colorsAuyux'
 
 export const screenStyles = {
     screenContainer: {
