@@ -1,14 +1,18 @@
-import { View, Text, StyleSheet, FlatList, Image, Pressable } from 'react-native'
+import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import { useDispatch } from 'react-redux'
 import shopCategories from '../data/shopCategories.json'
+import { getImage } from '../global/utils'
+import { setCategory } from '../redux/slices/shopSlice'
 import { colors } from '../styles/colors'
 import { screenStyles } from '../styles/screensStyles'
-import { getImage } from '../global/utils'
 
 const CategoriesScreen = ({ navigation }) => {
+  const dispatch = useDispatch()
   const renderCategoryItem = ({ index, item }) => {
     return (
       <Pressable style={styles.categoryItemCard}
         onPress={() => {
+          dispatch(setCategory(item.name))
           navigation.navigate('Shop Products')
         }} >
         <View style={

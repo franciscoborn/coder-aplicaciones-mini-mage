@@ -1,16 +1,16 @@
 import React from 'react'
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
-import store from '../data/shopProducts.json'
+import { useSelector } from 'react-redux'
+import { getImage } from '../global/utils'
 import { colors } from '../styles/colors'
 import { screenStyles } from '../styles/screensStyles'
-import { getImage } from '../global/utils'
 
 const ShopProductsScreen = () => {
-
-    const renderProductItem = ({item}) => {
+    const productsFilteredByCategory = useSelector(state => state.shopReducer.value.productsFilteredByCategory)
+    const renderProductItem = ({ item }) => {
         return (
             <View style={styles.shopProductItemCard}>
-                <Image style={styles.shopProductItemImage} source={getImage("shopProducts", item.name)}/>
+                <Image style={styles.shopProductItemImage} source={getImage("shopProducts", item.name)} />
                 <View style={styles.shopProductItemTextContainer}>
                     <View style={styles.shopProductItemTitleContainer}>
                         <Text style={styles.shopProductItemTitleText}>{item.name}</Text>
@@ -26,7 +26,7 @@ const ShopProductsScreen = () => {
         <View style={styles.screenContainer}>
             <Text style={styles.screenTitle}>Products</Text>
             <FlatList
-                data={store}
+                data={productsFilteredByCategory}
                 keyExtractor={item => item.id}
                 renderItem={renderProductItem}
             />

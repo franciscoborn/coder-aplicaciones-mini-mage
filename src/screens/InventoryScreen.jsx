@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
-import { screenStyles } from '../styles/screensStyles'
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import inventory from '../data/inventory.json'
-import { colors } from '../styles/colors'
 import { getImage } from '../global/utils'
+import { colors } from '../styles/colors'
+import { screenStyles } from '../styles/screensStyles'
 
 
 const InventoryScreen = () => {
 
-    const renderInventoryItem = ({item}) => {
+    const renderInventoryItem = ({ item }) => {
         return (
             <View style={styles.inventoryItemCard}>
                 <Image style={styles.inventoryItemCardImage} source={getImage("shopProducts", item.name)} />
@@ -18,7 +18,7 @@ const InventoryScreen = () => {
     return (
         <View style={styles.screenContainer}>
             <Text style={styles.screenTitle}>Inventory</Text>
-            <FlatList 
+            <FlatList
                 style={styles.inventoryItemCardContainer}
                 data={inventory}
                 keyExtractor={item => item.id}
