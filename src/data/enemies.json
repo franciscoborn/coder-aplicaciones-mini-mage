@@ -1,0 +1,32 @@
+[
+  {
+    "attack": 15,
+    "defense": 5,
+    "dodge": 50,
+    "experience": 5,
+    "gold": 10,
+    "health": 30,
+    "name": "Slime",
+    "id": 1
+  },
+  {
+    "attack": 25,
+    "defense": 10,
+    "dodge": 30,
+    "experience": 10,
+    "gold": 20,
+    "health": 60,
+    "name": "Wolf",
+    "id": 2
+  },
+  {
+    "attack": 0,
+    "defense": 20,
+    "dodge": 10,
+    "experience": 20,
+    "gold": 30,
+    "health": 100,
+    "name": "Bear",
+    "id": 3
+  }
+]

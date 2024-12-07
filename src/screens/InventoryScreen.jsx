@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: '4%'
     },
     inventoryItemCardImage: {
-        width: '50%',
-        height: '50%',
+        width: '60%',
+        height: '60%',
         resizeMode: 'contain',
         marginBottom: 2
     },
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         margin: '1.5%',
         backgroundColor: colors.cardsBackground,
-        paddingTop: 15,
+        paddingTop: 10,
         border: 'solid',
         borderWidth: 2,
         borderColor: colors.cardsBorder,

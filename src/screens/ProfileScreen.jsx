@@ -1,19 +1,23 @@
-import { View, Text, StyleSheet, Pressable, Image, ActivityIndicator } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image, ActivityIndicator, FlatList } from 'react-native'
 import { screenStyles } from '../styles/screensStyles'
 import { useSelector, useDispatch } from 'react-redux';
 import * as ImagePicker from 'expo-image-picker';
 import { setProfilePicture } from '../redux/slices/authSlice'
-import { usePutProfilePictureMutation } from '../redux/apis/userApi';
+import { usePutProfilePictureMutation, useGetUserInformationQuery } from '../redux/apis/userApi';
+import { colors } from '../styles/colors';
 
 
 const ProfileScreen = () => {
-    const email = useSelector((state) => state.authReducer.value.email);
-    const userName = useSelector((state) => state.authReducer.value.userName);
-    const profilePicture = useSelector((state) => state.authReducer.value.profilePicture);
     const localId = useSelector((state) => state.authReducer.value.localId);
+    const profilePicture = useSelector(state => state.authReducer.value.profilePicture)
     const dispatch = useDispatch();
 
-    const [triggerPutProfilePicture, { isLoading }] = usePutProfilePictureMutation();
+    const [triggerPutProfilePicture, { isLoading: isLoadingProfilePicture }] = usePutProfilePictureMutation();
+    let userId = 0
+    const { data: userInformation, isLoading: isLoadingUserInformation, error } = useGetUserInformationQuery(userId)
+
+    const stats = userInformation?.info?.stats || {};
+    const userName = userInformation?.info?.userName || 'Mini Mage';
 
     const verifyCameraPermissions = async () => {
         const { granted } = await ImagePicker.requestCameraPermissionsAsync()
@@ -49,7 +53,7 @@ const ProfileScreen = () => {
                     onPress={handleTakePicture}
                     style={styles.profilePictureContainer}
                 >
-                    {isLoading ? (
+                    {isLoadingProfilePicture ? (
                         <ActivityIndicator size="large" color="#000" />
                     ) : profilePicture ? (
                         <Image source={{ uri: profilePicture }} style={styles.profilePicture} />
@@ -59,6 +63,14 @@ const ProfileScreen = () => {
                         </Text>
                     )}
                 </Pressable>
+                <View style={styles.userInfoContainer}>
+                    <Text style={styles.stats}>Health: {stats.health}</Text>
+                    <Text style={styles.stats}>Attack: {stats.attack}</Text>
+                    <Text style={styles.stats}>Defense: {stats.defense}</Text>
+                    <Text style={styles.stats}>Gold: {stats.gold}</Text>
+                    <Text style={styles.stats}>Level: {stats.level}</Text>
+                    <Text style={styles.stats}>Experience: {stats.experience}</Text>
+                </View>
             </View>
         </View>
     )
@@ -98,5 +110,26 @@ const styles = StyleSheet.create({
     profilePicture: {
         width: '100%',
         height: '100%'
+    },
+    userInfoContainer: {
+        marginTop: 20,
+        width: '100%',
+        alignItems: 'center',
+        paddingHorizontal: 10
+    },
+    stats: {
+        fontSize: 20,
+        width: '90%',
+        marginVertical: 3,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        fontWeight: 'bold',
+        color: colors.text,
+        border: 'solid',
+        borderWidth: 2,
+        borderColor: colors.cardsBorder,
+        backgroundColor: colors.cardsBorder,
+        borderRadius: 5,
+        elevation: 5
     }
 })

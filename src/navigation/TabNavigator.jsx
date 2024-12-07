@@ -5,6 +5,7 @@ import { StyleSheet, SafeAreaView, Image } from "react-native"
 import { colors } from "../styles/colors"
 import { assetsImages } from "../global/importImages"
 import ProfileScreen from "../screens/ProfileScreen"
+import GameScreen from "../screens/GameScreen"
 
 const Tab = createBottomTabNavigator()
 
@@ -29,6 +30,10 @@ const TabNavigator = () => {
                             imageSource = focused
                                 ? assetsImages.interface.iconProfile
                                 : assetsImages.interface.iconProfile;
+                        } else if (route.name === 'Game') {
+                            imageSource = focused
+                                ? assetsImages.interface.iconBattle
+                                : assetsImages.interface.iconBattle;
                         } else if (route.name === 'Inventory') {
                             imageSource = focused
                                 ? assetsImages.interface.iconInventory
@@ -55,6 +60,7 @@ const TabNavigator = () => {
                 })}
             >
                 <Tab.Screen name="Profile" component={ProfileScreen} />
+                <Tab.Screen name="Game" component={GameScreen} />
                 <Tab.Screen name="Inventory" component={InventoryScreen} />
                 <Tab.Screen name="Shop" component={ShopNavigator} />
             </Tab.Navigator>

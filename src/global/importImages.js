@@ -1,8 +1,10 @@
 export const assetsImages = {
     interface: {
         iconInventory: require('../../assets/images/img-interface/icon-inventory.png'),
+        iconBattle: require('../../assets/images/img-interface/icon-battle.png'),
         iconShop: require('../../assets/images/img-interface/icon-shop.png'),
-        iconProfile: require('../../assets/images/img-interface/icon-mini-mage.png')
+        iconProfile: require('../../assets/images/img-interface/icon-mini-mage.png'),
+        logoMiniMage: require('../../assets/images/img-interface/logo-mini-mage.png'),
     },
     shopProducts: {
         productBluePotion: require('../../assets/images/img-products/blue-potion.png'),

@@ -16,18 +16,18 @@ export const userApi = createApi({
     getProfilePicture: builder.query({
       query: (localId) => `profilePictures/${localId}.json`
     }),
-    updateUserInventory: builder.mutation({
+    updateUserInformation: builder.mutation({
       query: ({ userId, items }) => ({
-        url: `/users/${userId}/inventory`,
+        url: `/user-info/${userId}`,
         method: 'POST',
         body: { items },
       }),
     }),
-    getUserInventory: builder.query({
-      query: (userId) => `/users/${userId}/inventory`,
+    getUserInformation: builder.query({
+      query: (userId) => `/user-info/${userId}.json`
     }),
   }),
 });
 
 
-export const { usePutProfilePictureMutation, useGetProfilePictureQuery, useUpdateUserInventoryMutation, useGetUserInventoryQuery } = userApi;
+export const { usePutProfilePictureMutation, useGetProfilePictureQuery, useUpdateUserInformationMutation, useGetUserInformationQuery } = userApi;
