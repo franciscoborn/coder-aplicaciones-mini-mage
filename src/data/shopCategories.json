@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "consumables"
+    },
+    {
+        "id": 2,
+        "name": "artifacts"
+    },
+    {
+        "id": 3,
+        "name": "armors"
+    },
+    {
+        "id": 4,
+        "name": "weapons"
+    },
+    {
+        "id": 5,
+        "name": "miscellaneous"
+    }
+]

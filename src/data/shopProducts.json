@@ -1,0 +1,114 @@
+[
+    {
+        "id": 1,
+        "name": "Blue Potion",
+        "price": 50,
+        "stock": 10,
+        "category": "consumables",
+        "description": "Una poción que te recupera 50MP"
+    },
+    {
+        "id": 2,
+        "name": "Double Axe",
+        "price": 150,
+        "stock": 5,
+        "category": "weapons",
+        "description": "Un hacha doble para causar daño severo"
+    },
+    {
+        "id": 3,
+        "name": "Gold Dagger",
+        "price": 100,
+        "stock": 8,
+        "category": "weapons",
+        "description": "Una daga hecha de oro, ligera y letal"
+    },
+    {
+        "id": 4,
+        "name": "Gold Sword",
+        "price": 200,
+        "stock": 3,
+        "category": "weapons",
+        "description": "Una espada de oro, ideal para caballeros"
+    },
+    {
+        "id": 5,
+        "name": "Green Apple",
+        "price": 10,
+        "stock": 20,
+        "category": "consumables",
+        "description": "Una manzana verde que recupera un poco de vida"
+    },
+    {
+        "id": 6,
+        "name": "Green Potion",
+        "price": 60,
+        "stock": 12,
+        "category": "consumables",
+        "description": "Una poción que recupera 30HP"
+    },
+    {
+        "id": 7,
+        "name": "Hourglass",
+        "price": 120,
+        "stock": 7,
+        "category": "artifacts",
+        "description": "Un reloj de arena que detiene el tiempo por unos segundos"
+    },
+    {
+        "id": 8,
+        "name": "Platinum Sword",
+        "price": 300,
+        "stock": 2,
+        "category": "weapons",
+        "description": "Una poderosa espada de platino"
+    },
+    {
+        "id": 9,
+        "name": "Red Blood Dagger",
+        "price": 180,
+        "stock": 4,
+        "category": "weapons",
+        "description": "Una daga especial que roba vida al enemigo"
+    },
+    {
+        "id": 10,
+        "name": "Red Potion",
+        "price": 40,
+        "stock": 15,
+        "category": "consumables",
+        "description": "Una poción que te recupera 20HP"
+    },
+    {
+        "id": 11,
+        "name": "Shield",
+        "price": 90,
+        "stock": 10,
+        "category": "armors",
+        "description": "Un escudo resistente para bloquear ataques enemigos"
+    },
+    {
+        "id": 12,
+        "name": "Skull Scroll",
+        "price": 70,
+        "stock": 6,
+        "category": "artifacts",
+        "description": "Un pergamino maldito con poderes oscuros"
+    },
+    {
+        "id": 13,
+        "name": "Super Red Potion",
+        "price": 120,
+        "stock": 8,
+        "category": "consumables",
+        "description": "Una poción poderosa que recupera toda la vida"
+    },
+    {
+        "id": 14,
+        "name": "Treasure Chest",
+        "price": 500,
+        "stock": 1,
+        "category": "miscellaneous",
+        "description": "Un cofre del tesoro lleno de riquezas"
+    }
+]

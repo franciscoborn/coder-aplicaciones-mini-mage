@@ -1,40 +1,84 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import React from 'react'
-import ResumeScreen from "../screens/ResumeScreen"
+import ShopNavigator from "../navigation/ShopNavigator"
 import InventoryScreen from "../screens/InventoryScreen"
-import ShopNavigator from "./ShopNavigator"
-import CartNavigator from "./CartNavigator";
+import { StyleSheet, SafeAreaView, Image } from "react-native"
+import { colors } from "../styles/colors"
+import { assetsImages } from "../global/importImages"
+import ProfileScreen from "../screens/ProfileScreen"
 
 const Tab = createBottomTabNavigator()
 
 
 const TabNavigator = () => {
     return (
-        <Tab.Navigator 
-            initialRouteName="Resume"
-            screenOptions={{
-                headerShown: false,
-                tabBarShowLabel: false,
-            }}
-        >
-            <Tab.Screen 
-                name="Resume"
-                component={ResumeScreen} 
-            />
-            <Tab.Screen 
-                name="Inventory" 
-                component={InventoryScreen} 
-            />
-            <Tab.Screen 
-                name="Shop" 
-                component={ShopNavigator} 
-            />
-            <Tab.Screen 
-                name="Cart" 
-                component={CartNavigator} 
-            />
-        </Tab.Navigator>
+        <SafeAreaView style={styles.safeAreaView}>
+            <Tab.Navigator
+                initialRouteName="Profile"
+                screenOptions={({ route }) => ({
+                    headerShown: false,
+                    tabBarShowLabel: true,
+                    tabBarStyle: styles.navigator,
+                    tabBarLabelStyle: {
+                        fontSize: 18,
+                        fontWeight: 'bold',
+                    },
+                    tabBarIcon: ({ focused }) => {
+                        let imageSource;
+
+                        if (route.name === 'Profile') {
+                            imageSource = focused
+                                ? assetsImages.interface.iconProfile
+                                : assetsImages.interface.iconProfile;
+                        } else if (route.name === 'Inventory') {
+                            imageSource = focused
+                                ? assetsImages.interface.iconInventory
+                                : assetsImages.interface.iconInventory;
+                        } else if (route.name === 'Shop') {
+                            imageSource = focused
+                                ? assetsImages.interface.iconShop
+                                : assetsImages.interface.iconShop;
+                        }
+
+                        return (
+                            <Image
+                                source={imageSource}
+                                style={{
+                                    width: 48,
+                                    height: 48,
+                                    resizeMode: 'contain'
+                                }}
+                            />
+                        );
+                    },
+                    tabBarActiveTintColor: colors.text,
+                    tabBarInactiveTintColor: 'gray',
+                })}
+            >
+                <Tab.Screen name="Profile" component={ProfileScreen} />
+                <Tab.Screen name="Inventory" component={InventoryScreen} />
+                <Tab.Screen name="Shop" component={ShopNavigator} />
+            </Tab.Navigator>
+        </SafeAreaView>
     )
 }
 
 export default TabNavigator
+
+const styles = StyleSheet.create({
+    navigator: {
+        backgroundColor: colors.cardsBackground,
+        marginVertical: '2%',
+        marginHorizontal: '3%',
+        borderStyle: 'solid',
+        borderWidth: 3,
+        borderColor: colors.cardsBorder,
+        height: 80,
+        borderRadius: 5,
+        elevation: 5,
+        fontSize: 30
+    },
+    safeAreaView: {
+        flex: 1,
+        backgroundColor: colors.screenBackgroundColor
+    }
+})

@@ -9,7 +9,8 @@ export const createSessionsTable = async () => {
             CREATE TABLE IF NOT EXISTS sessions (
                 localId TEXT PRIMARY KEY NOT NULL,
                 email TEXT NOT NULL,
-                token TEXT NOT NULL
+                token TEXT NOT NULL,
+                userName TEXT NOT NULL
             )
     `;
         db.runAsync((tx) => {
@@ -24,15 +25,15 @@ export const createSessionsTable = async () => {
 };
 
 // Function to insert a session into the table
-export const insertSession = async ({ email, localId, token }) => {
+export const insertSession = async ({ email, localId, token, userName }) => {
     const db = await dbPromise;
     return new Promise((resolve, reject) => {
         const query = `
-            INSERT INTO sessions (email, localId, token)
-            VALUES (?, ?, ?)
+            INSERT INTO sessions (email, localId, token, userName)
+            VALUES (?, ?, ?, ?)
     `;
         db.runAsync((tx) => {
-            tx.executeSqlAsync(query, [email, localId, token])
+            tx.executeSqlAsync(query, [email, localId, token, userName])
                 .then(resolve)
                 .catch((error) => {
                     console.error("Error inserting session:", error);

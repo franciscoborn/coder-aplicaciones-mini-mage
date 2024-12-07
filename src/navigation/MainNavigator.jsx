@@ -1,21 +1,20 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { useEffect } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import TabNavigator from "./TabNavigator";
-import AuthNavigator from "./AuthNavigator";
 
-import { useGetProfilePictureQuery } from "../services/userService";
-import { setProfilePicture } from "../features/auth/authSlice";
+import { useGetProfilePictureQuery } from "../redux/apis/userApi";
+import { setProfilePicture } from "../redux/slices/authSlice";
 
 import { fetchSession } from "../db";
-import { setUser } from "../features/auth/authSlice";
+import { setUser } from "../redux/slices/authSlice";
 
 const MainNavigator = () => {
-    const user = useSelector(state=>state.authReducer.value.email)
-    const localId = useSelector(state=>state.authReducer.value.localId)
+    const user = useSelector(state => state.authReducer.value.email)
+    const localId = useSelector(state => state.authReducer.value.localId)
     const dispatch = useDispatch()
-    const {data:profilePicture, isLoading, error} = useGetProfilePictureQuery(localId)
+    const { data: profilePicture } = useGetProfilePictureQuery(localId)
     useEffect(() => {
         if (!user) {
             (async () => {
@@ -35,13 +34,12 @@ const MainNavigator = () => {
         if (profilePicture) {
             dispatch(setProfilePicture(profilePicture.image))
         }
-
     }, [profilePicture])
 
     return (
         <NavigationContainer>
             {
-                user ? <TabNavigator /> : <AuthNavigator />
+                user ? <TabNavigator /> : <TabNavigator />
             }
         </NavigationContainer>
     );
